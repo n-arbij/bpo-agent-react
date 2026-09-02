@@ -27,7 +27,7 @@ const Footer = () => {
           </div>
           <div>
             <span>Reach out</span>
-            <a href="mailto:hello@clearlinecx.com">hello@clearlinecx.com</a>
+            <a href="mailto:clearlinecxoutsourcing@gmail.com">clearlinecxoutsourcing@gmail.com</a>
             <a href="#contact">Book a quick intro call</a>
           </div>
         </div>

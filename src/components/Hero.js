@@ -19,7 +19,7 @@ const Hero = () => {
 
           <div className="hero-actions">
             <a href="#contact" className="primary-button">Book a quick intro call</a>
-            <a href="mailto:hello@clearlinecx.com" className="secondary-button">Message us directly</a>
+            <a href="mailto:clearlinecxoutsourcing@gmail.com" className="secondary-button">Message us directly</a>
           </div>
         </motion.div>
 

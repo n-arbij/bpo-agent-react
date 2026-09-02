@@ -1,4 +1,5 @@
 import React from 'react';
+import { CheckCircle2, Mail } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Footer from './components/Footer';
@@ -77,7 +78,7 @@ function App() {
             <div className="service-grid">
               {serviceFeatures.map((feature) => (
                 <div className="feature-card" key={feature}>
-                  <span className="checkmark">✓</span>
+                  <span className="checkmark"><CheckCircle2 size={24} /></span>
                   <p>{feature}</p>
                 </div>
               ))}
@@ -115,7 +116,7 @@ function App() {
               ))}
             </div>
             <p className="support-summary">
-              Clearline CX is built for small and mid-sized businesses that have reached the point where support has become a real bottleneck to growth, but aren’t ready—or don’t want—to build a full in-house team from scratch.
+              We've built Clearline CX for small and mid-sized businesses that have reached the point where support has become a real bottleneck to growth, but aren't ready—or don't want—to build a full in-house team from scratch.
             </p>
           </div>
         </section>
@@ -128,7 +129,7 @@ function App() {
             </div>
             <div className="standard-card">
               <p>
-                I built this company on the same standards I held myself to for 6 years in the field: fast response times, genuine empathy in every interaction, and treating every customer conversation like it matters—because to your business, it does. Every agent we bring onto a client account is trained not just on process, but on the mindset that a satisfied customer is a retained customer.
+                We built this company on the same standards we've held ourselves to for 6 years in the field: fast response times, genuine empathy in every interaction, and treating every customer conversation like it matters—because to your business, it does. Every agent we bring onto a client account is trained not just on process, but on the mindset that a satisfied customer is a retained customer.
               </p>
             </div>
           </div>
@@ -140,9 +141,9 @@ function App() {
               <span className="eyebrow">Let&apos;s talk</span>
               <h2>If your support inbox is piling up, we should talk.</h2>
               <p>
-                If your support inbox is piling up, your team is stretched too thin, or you’re weighing the cost of building an in-house department versus outsourcing, I’d genuinely love to hear about what you’re dealing with. There’s no pressure and no generic sales pitch—just a real conversation about whether Clearline CX is a good fit for where your business is right now.
+                If your support inbox is piling up, your team is stretched too thin, or you're weighing the cost of building an in-house department versus outsourcing, we'd genuinely love to hear about what you're dealing with. There's no pressure and no generic sales pitch—just a real conversation about whether Clearline CX is a good fit for where your business is right now.
               </p>
-              <p className="contact-note">📩 Message me directly, or use the form to book a quick intro call.</p>
+              <p className="contact-note"><Mail size={18} style={{ display: 'inline', marginRight: '6px', verticalAlign: 'middle' }} /> Message us directly, or use the form to book a quick intro call.</p>
             </div>
 
             <form className="contact-form" onSubmit={(event) => event.preventDefault()}>

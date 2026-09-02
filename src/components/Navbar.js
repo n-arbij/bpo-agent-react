@@ -42,7 +42,7 @@ const Navbar = () => {
         </div>
 
         <div className="nav-actions">
-          <a href="mailto:hello@clearlinecx.com" className="nav-link">Email</a>
+          <a href="mailto:clearlinecxoutsourcing@gmail.com" className="nav-link">Email</a>
           <a href="#contact" className="primary-button nav-button">Book a call</a>
         </div>
       </div>
