@@ -1,5 +1,5 @@
-import React from 'react';
-import { CheckCircle2, Mail } from 'lucide-react';
+import React, { useState } from 'react';
+import { CheckCircle2, Mail, X } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Footer from './components/Footer';
@@ -30,8 +30,45 @@ const processSteps = [
 const clientTypes = ['SaaS companies', 'E-commerce brands', 'Service businesses', 'Startups'];
 
 function App() {
+  const [isSending, setIsSending] = useState(false);
+  const [toast, setToast] = useState(null);
+
+  const handleInquirySubmit = async (event) => {
+    event.preventDefault();
+    setIsSending(true);
+    setToast(null);
+
+    const formData = new FormData(event.currentTarget);
+    const inquiry = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch('/api/SendInquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(inquiry),
+      });
+
+      if (!response.ok) {
+        throw new Error('Unable to send inquiry');
+      }
+
+      event.currentTarget.reset();
+      setToast({ type: 'success', message: 'Your message has been sent.' });
+    } catch (error) {
+      setToast({ type: 'error', message: 'We could not send your message. Please try again.' });
+    } finally {
+      setIsSending(false);
+    }
+  };
+
   return (
     <div className="App">
+      {toast && (
+        <div className={`toast toast-${toast.type}`} role="status" aria-live="polite">
+          <span>{toast.message}</span>
+          <button type="button" onClick={() => setToast(null)} aria-label="Dismiss notification"><X size={18} /></button>
+        </div>
+      )}
       <Navbar />
       <main>
         <Hero />
@@ -146,7 +183,7 @@ function App() {
               <p className="contact-note"><Mail size={18} style={{ display: 'inline', marginRight: '6px', verticalAlign: 'middle' }} /> Message us directly, or use the form to book a quick intro call.</p>
             </div>
 
-            <form className="contact-form" onSubmit={(event) => event.preventDefault()}>
+            <form className="contact-form" onSubmit={handleInquirySubmit}>
               <div className="field-group">
                 <label htmlFor="name">Your name</label>
                 <input id="name" name="name" type="text" placeholder="Jane Smith" />
@@ -162,7 +199,9 @@ function App() {
                 <textarea id="message" name="message" rows="6" placeholder="Tell us about your support challenges, volume, and goals." />
               </div>
 
-              <button type="submit" className="primary-button">Send inquiry</button>
+              <button type="submit" className="primary-button" disabled={isSending}>
+                {isSending ? 'Sending...' : 'Send inquiry'}
+              </button>
             </form>
           </div>
         </section>

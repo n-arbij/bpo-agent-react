@@ -5,6 +5,56 @@
   color: #101828;
 }
 
+.toast {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: calc(100% - 32px);
+  padding: 13px 16px 13px 18px;
+  border: 1px solid #d7e2ee;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #172033;
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.16);
+  font-family: 'Radio Canada Big', sans-serif;
+  transform: translateX(-50%);
+  animation: toast-in 0.25s ease-out;
+}
+
+.toast-success {
+  border-color: #b8dca8;
+}
+
+.toast-error {
+  border-color: #efb4b4;
+  color: #8a2525;
+}
+
+.toast button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
 main {
   width: 100%;
 }
@@ -495,6 +545,12 @@ main {
   border: none;
   margin-top: 8px;
   cursor: pointer;
+}
+
+.contact-form .primary-button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+  transform: none;
 }
 
 .site-footer {
