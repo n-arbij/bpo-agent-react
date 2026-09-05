@@ -43,7 +43,7 @@ const Navbar = () => {
 
         <div className="nav-actions">
           <a href="mailto:clearlinecxoutsourcing@gmail.com" className="nav-link">Email</a>
-          <a href="#contact" className="primary-button nav-button">Book a call</a>
+          <a href="tel:+254703958727" className="nav-link" aria-label="Call +254 703 958 727">Call</a>
         </div>
       </div>
     </motion.nav>

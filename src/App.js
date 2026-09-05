@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { CheckCircle2, Mail, X } from 'lucide-react';
+import React from 'react';
+import { CheckCircle2, Mail, Phone } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Footer from './components/Footer';
@@ -30,45 +30,8 @@ const processSteps = [
 const clientTypes = ['SaaS companies', 'E-commerce brands', 'Service businesses', 'Startups'];
 
 function App() {
-  const [isSending, setIsSending] = useState(false);
-  const [toast, setToast] = useState(null);
-
-  const handleInquirySubmit = async (event) => {
-    event.preventDefault();
-    setIsSending(true);
-    setToast(null);
-
-    const formData = new FormData(event.currentTarget);
-    const inquiry = Object.fromEntries(formData.entries());
-
-    try {
-      const response = await fetch('/api/SendInquiry', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(inquiry),
-      });
-
-      if (!response.ok) {
-        throw new Error('Unable to send inquiry');
-      }
-
-      event.currentTarget.reset();
-      setToast({ type: 'success', message: 'Your message has been sent.' });
-    } catch (error) {
-      setToast({ type: 'error', message: 'We could not send your message. Please try again.' });
-    } finally {
-      setIsSending(false);
-    }
-  };
-
   return (
     <div className="App">
-      {toast && (
-        <div className={`toast toast-${toast.type}`} role="status" aria-live="polite">
-          <span>{toast.message}</span>
-          <button type="button" onClick={() => setToast(null)} aria-label="Dismiss notification"><X size={18} /></button>
-        </div>
-      )}
       <Navbar />
       <main>
         <Hero />
@@ -180,29 +143,14 @@ function App() {
               <p>
                 If your support inbox is piling up, your team is stretched too thin, or you're weighing the cost of building an in-house department versus outsourcing, we'd genuinely love to hear about what you're dealing with. There's no pressure and no generic sales pitch—just a real conversation about whether Clearline CX is a good fit for where your business is right now.
               </p>
-              <p className="contact-note"><Mail size={18} style={{ display: 'inline', marginRight: '6px', verticalAlign: 'middle' }} /> Message us directly, or use the form to book a quick intro call.</p>
+              <div className="contact-actions">
+                <a href="mailto:clearlinecxoutsourcing@gmail.com" className="primary-button"><Mail size={18} /> Email us directly</a>
+                <a href="tel:+254703958727" className="secondary-button" aria-label="Call +254 703 958 727"><Phone size={18} /> Call</a>
+              </div>
             </div>
-
-            <form className="contact-form" onSubmit={handleInquirySubmit}>
-              <div className="field-group">
-                <label htmlFor="name">Your name</label>
-                <input id="name" name="name" type="text" placeholder="Jane Smith" />
-              </div>
-
-              <div className="field-group">
-                <label htmlFor="email">Work email</label>
-                <input id="email" name="email" type="email" placeholder="jane@company.com" />
-              </div>
-
-              <div className="field-group">
-                <label htmlFor="message">What would you like us to support you with?</label>
-                <textarea id="message" name="message" rows="6" placeholder="Tell us about your support challenges, volume, and goals." />
-              </div>
-
-              <button type="submit" className="primary-button" disabled={isSending}>
-                {isSending ? 'Sending...' : 'Send inquiry'}
-              </button>
-            </form>
+            <div className="contact-visual">
+              <img src="/images/callus.svg" alt="Call us at +254 703 958 727" />
+            </div>
           </div>
         </section>
       </main>

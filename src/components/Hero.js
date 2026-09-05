@@ -18,8 +18,8 @@ const Hero = () => {
           </p>
 
           <div className="hero-actions">
-            <a href="#contact" className="primary-button">Book a quick intro call</a>
-            <a href="mailto:clearlinecxoutsourcing@gmail.com" className="secondary-button">Message us directly</a>
+            <a href="mailto:clearlinecxoutsourcing@gmail.com" className="primary-button">Message us directly</a>
+            <a href="tel:+254703958727" className="secondary-button" aria-label="Call +254 703 958 727">Call</a>
           </div>
         </motion.div>
 

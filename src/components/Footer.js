@@ -28,7 +28,7 @@ const Footer = () => {
           <div>
             <span>Reach out</span>
             <a href="mailto:clearlinecxoutsourcing@gmail.com">clearlinecxoutsourcing@gmail.com</a>
-            <a href="#contact">Book a quick intro call</a>
+            <span>+254 703 958 727</span>
           </div>
         </div>
       </div>
